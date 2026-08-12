@@ -1683,40 +1683,193 @@ function updateNextOrderNo(){
    Customer UI does NOT show internal Order No / Order ID.
    Admin page shows both values.
    ========================================================= */
+/* =========================================================
+   GOOGLE SHEET ORDER API
+   ========================================================= */
+
+const GOOGLE_SHEET_API =
+  "https://script.google.com/macros/s/AKfycbxmp9iqWULp2VKnZYiWnP9v3feQPylt3uUaqC_avYOacZH0uOTTYjpB58BDw9z50OfA/exec";
+
+
 function makeOrderId(){
   return "UVO-"+Date.now().toString(36).toUpperCase()+"-"+Math.random().toString(36).slice(2,7).toUpperCase();
 }
-async function placeOrder(e){ if(!validateUpdatedCheckout()) return false;
+
+
+/* =========================================================
+   PLACE ORDER
+   ========================================================= */
+
+async function placeOrder(e){
+
+  if(!validateUpdatedCheckout()) return false;
+
   e.preventDefault();
-  if(!cart.length){alert("Please add a product to cart first.");return;}
+
+  if(!cart.length){
+    alert("Please add a product to cart first.");
+    return;
+  }
+
   const n=document.getElementById("oname").value.trim();
   const ph=document.getElementById("ophone").value.trim();
   const ad=document.getElementById("oaddress").value.trim();
   const s=document.getElementById("osize").value.trim();
   const area=document.getElementById("oarea").value.trim();
   const note=document.getElementById("onote").value.trim();
-  const transaction=document.getElementById("transactionId")?.value.trim()||"";
+
+  const transaction =
+    document.getElementById("transactionId")?.value.trim() || "";
+
   const orderNo=commitOrderNo();
   const orderId=makeOrderId();
 
-  let total=0,items=[];
+  let total=0;
+  let items=[];
+
+
+  /* =========================================================
+     CART PRODUCTS
+     ========================================================= */
+
   cart.forEach(item=>{
+
     const p=products.find(x=>x.id===item.id);
-    const price=p.discountPrice&&p.discountPrice<p.actualPrice?p.discountPrice:p.actualPrice;
-    total+=price*item.qty;
-    items.push({id:p.id,name:p.name,qty:item.qty,price});
+
+    if(!p) return;
+
+    const price =
+      p.discountPrice && p.discountPrice < p.actualPrice
+        ? p.discountPrice
+        : p.actualPrice;
+
+    total += price * item.qty;
+
+    items.push({
+      id:p.id,
+      name:p.name,
+      qty:item.qty,
+      price:price
+    });
+
   });
 
-  const order={
-    orderNo,orderId,date:new Date().toISOString(),customer:n,phone:ph,
-    address:ad,size:s,area,note,paymentMethod:selectedPayment,
-    transactionId:transaction,items,total,status:"Received"
-  };
-  const orders=JSON.parse(localStorage.getItem("uvoOrders")||"[]");
-  orders.push(order);
-  localStorage.setItem("uvoOrders",JSON.stringify(orders));
 
-  const itemText=items.map(x=>`- ${x.name} × ${x.qty} = ৳${x.price*x.qty}`).join("\n");
+  /* =========================================================
+     ORDER DATA
+     ========================================================= */
+
+  const order={
+
+    type:"order",
+
+    orderNo:orderNo,
+
+    orderId:orderId,
+
+    date:new Date().toISOString(),
+
+    customer:n,
+
+    phone:ph,
+
+    address:ad,
+
+    size:s,
+
+    area:area,
+
+    note:note,
+
+    paymentMethod:selectedPayment,
+
+    transactionId:transaction,
+
+    items:items,
+
+    total:total,
+
+    status:"Received"
+
+  };
+
+
+  /* =========================================================
+     SAVE LOCAL ORDER
+     ========================================================= */
+
+  const orders =
+    JSON.parse(localStorage.getItem("uvoOrders") || "[]");
+
+  orders.push(order);
+
+  localStorage.setItem(
+    "uvoOrders",
+    JSON.stringify(orders)
+  );
+
+
+  /* =========================================================
+     SEND ORDER TO GOOGLE SHEET
+     ========================================================= */
+
+  try{
+
+    const sheetResponse = await fetch(
+      GOOGLE_SHEET_API,
+      {
+        method:"POST",
+
+        headers:{
+          "Content-Type":"text/plain;charset=utf-8"
+        },
+
+        body:JSON.stringify(order)
+      }
+    );
+
+    const sheetResult = await sheetResponse.json();
+
+    console.log(
+      "Google Sheet Response:",
+      sheetResult
+    );
+
+    if(!sheetResult.ok){
+
+      console.warn(
+        "Google Sheet did not accept the order:",
+        sheetResult
+      );
+
+    }
+
+  }catch(error){
+
+    console.error(
+      "Google Sheet API Error:",
+      error
+    );
+
+    /*
+      Order is still saved locally even if
+      Google Sheet is temporarily unavailable.
+    */
+
+  }
+
+
+  /* =========================================================
+     WHATSAPP MESSAGE
+     ========================================================= */
+
+  const itemText=items
+    .map(x =>
+      `- ${x.name} × ${x.qty} = ৳${x.price*x.qty}`
+    )
+    .join("\n");
+
+
   const message=`NEW ORDER - UNIQUE VS OTHERS
 Order No: #${orderNo}
 Order ID: ${orderId}
@@ -1726,7 +1879,7 @@ Address: ${ad}
 Area: ${area}
 Size: ${s}
 Payment: ${selectedPayment}
-Transaction ID: ${transaction||"N/A"}
+Transaction ID: ${transaction || "N/A"}
 Note: ${note}
 
 Products:
@@ -1734,55 +1887,196 @@ ${itemText}
 
 Total: ৳${total}`;
 
+
   /* =========================================================
      CUSTOMER STATEMENT
-     Internal Order No and Order ID are intentionally hidden.
      ========================================================= */
-  const statement=document.getElementById("customerStatement");
+
+  const statement =
+    document.getElementById("customerStatement");
+
   if(statement){
+
     statement.style.display="block";
-    statement.innerHTML=`<div class="statement-ok">✓ Order received successfully</div>
-    <h3>Customer Order Statement</h3>
-    <p><b>Order #${formatOrderNo(orderNo)}</b> · ${new Date(order.date).toLocaleDateString("en-GB")}</p>
-    <p>Name: <b>${escapeHtml(n)}</b><br>Phone: <b>${escapeHtml(ph)}</b></p>
-    <div class="statement-items">${items.map(x=>`<div><span>${escapeHtml(x.name)} × ${x.qty}</span><b>৳ ${money(x.price*x.qty)}</b></div>`).join("")}</div>
-    <div class="statement-total"><span>Total Amount</span><b>৳ ${money(total)}</b></div>
-    <p>Payment: <b>${escapeHtml(selectedPayment)}</b><br>Status: <b>Received</b></p>
-    <small>Keep this Order #${formatOrderNo(orderNo)} for future communication.</small>`;
+
+    statement.innerHTML=`
+
+      <div class="statement-ok">
+        ✓ Order received successfully
+      </div>
+
+      <h3>Customer Order Statement</h3>
+
+      <p>
+        <b>Order #${formatOrderNo(orderNo)}</b>
+        · ${new Date(order.date).toLocaleDateString("en-GB")}
+      </p>
+
+      <p>
+        Name:
+        <b>${escapeHtml(n)}</b>
+        <br>
+        Phone:
+        <b>${escapeHtml(ph)}</b>
+      </p>
+
+      <div class="statement-items">
+
+        ${items.map(x=>`
+
+          <div>
+
+            <span>
+              ${escapeHtml(x.name)} × ${x.qty}
+            </span>
+
+            <b>
+              ৳ ${money(x.price*x.qty)}
+            </b>
+
+          </div>
+
+        `).join("")}
+
+      </div>
+
+      <div class="statement-total">
+
+        <span>Total Amount</span>
+
+        <b>
+          ৳ ${money(total)}
+        </b>
+
+      </div>
+
+      <p>
+
+        Payment:
+        <b>${escapeHtml(selectedPayment)}</b>
+
+        <br>
+
+        Status:
+        <b>Received</b>
+
+      </p>
+
+      <small>
+        Keep this Order #${formatOrderNo(orderNo)}
+        for future communication.
+      </small>
+
+    `;
+
   }
+
 
   /* =========================================================
      WHATSAPP CLOUD API
-     The secret token stays inside Netlify Function.
-     If the function is not configured yet, the order is still
-     saved and the message is copied as a safe fallback.
      ========================================================= */
+
   try{
-    const api=await fetch("/.netlify/functions/send-order",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({message,order})
-    });
-    if(!api.ok)throw new Error("WhatsApp API is not configured");
+
+    const api=await fetch(
+      "/.netlify/functions/send-order",
+      {
+        method:"POST",
+
+        headers:{
+          "Content-Type":"application/json"
+        },
+
+        body:JSON.stringify({
+          message:message,
+          order:order
+        })
+
+      }
+    );
+
+    if(!api.ok){
+      throw new Error(
+        "WhatsApp API is not configured"
+      );
+    }
+
   }catch(err){
-    navigator.clipboard?.writeText(message).catch(()=>{});
+
+    console.warn(
+      "WhatsApp API unavailable:",
+      err
+    );
+
+    navigator.clipboard
+      ?.writeText(message)
+      .catch(()=>{});
+
   }
 
+
+  /* =========================================================
+     CLEAR CART
+     ========================================================= */
+
   cart=[];
+
   saveCart();
+
   updateNextOrderNo();
+
   renderCheckout();
+
   e.target.reset();
 
+
+  /* =========================================================
+     RESET PAYMENT
+     ========================================================= */
+
   selectedPayment="Cash on Delivery";
-  document.querySelectorAll(".payment-option").forEach(x=>x.classList.remove("active"));
-  document.querySelector('.payment-option[data-method="Cash on Delivery"]')?.classList.add("active");
-  document.getElementById("paymentMethod").value="Cash on Delivery";
-  document.getElementById("paymentDetails").textContent=PAYMENT_INFO["Cash on Delivery"];
-  document.getElementById("transactionField").style.display="none";
+
+  document
+    .querySelectorAll(".payment-option")
+    .forEach(x =>
+      x.classList.remove("active")
+    );
+
+  document
+    .querySelector(
+      '.payment-option[data-method="Cash on Delivery"]'
+    )
+    ?.classList.add("active");
+
+
+  document.getElementById(
+    "paymentMethod"
+  ).value="Cash on Delivery";
+
+
+  document.getElementById(
+    "paymentDetails"
+  ).textContent =
+    PAYMENT_INFO["Cash on Delivery"];
+
+
+  document.getElementById(
+    "transactionField"
+  ).style.display="none";
+
+
+  /* =========================================================
+     REFRESH PRODUCTS
+     ========================================================= */
 
   renderAll();
-  statement?.scrollIntoView({behavior:"smooth",block:"center"});
+
+
+  statement?.scrollIntoView({
+    behavior:"smooth",
+    block:"center"
+  });
+
 }
 
 /* =========================================================
