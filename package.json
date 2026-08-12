@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "@netlify/blobs": "^9.0.0"
   }
 }
