@@ -1,28 +1,24 @@
-
-const { getStore } = require("@netlify/blobs");
+const GOOGLE_SHEET_API =
+  "https://script.google.com/macros/s/AKfycbxmp9iqWULp2VKnZYiWnP9v3feQPylt3uUaqC_avYOacZH0uOTTYjpB58BDw9z50OfA/exec";
 
 exports.handler = async (event) => {
   try {
-    const store = getStore("customer-requests");
-
-    // GET = সব customer request দেখাবে
+    // GET — Customer Requests নেওয়া
     if (event.httpMethod === "GET") {
-      const requests =
-        (await store.get("requests", { type: "json" })) || [];
+      const response = await fetch(GOOGLE_SHEET_API);
+
+      const data = await response.json();
 
       return {
         statusCode: 200,
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          ok: true,
-          requests
-        })
+        body: JSON.stringify(data)
       };
     }
 
-    // POST = নতুন customer request save করবে
+    // POST — নতুন Customer Request পাঠানো
     if (event.httpMethod === "POST") {
       const incoming = JSON.parse(event.body || "{}");
 
@@ -46,47 +42,47 @@ exports.handler = async (event) => {
         };
       }
 
-      const requests =
-        (await store.get("requests", { type: "json" })) || [];
-
-      const request = {
-        ...incoming,
-        requestId:
-          incoming.requestId ||
-          "REQ-" + Date.now().toString(36).toUpperCase(),
-        status: incoming.status || "Received",
-        serverReceivedAt: new Date().toISOString()
-      };
-
-      requests.push(request);
-
-      await store.setJSON("requests", requests);
-
-      return {
-        statusCode: 200,
+      const response = await fetch(GOOGLE_SHEET_API, {
+        method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          ok: true,
-          message: "Customer request saved successfully.",
-          request
+          type: "customer-request",
+          ...incoming
         })
+      });
+
+      const data = await response.json();
+
+      return {
+        statusCode: response.ok ? 200 : 500,
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
       };
     }
 
     return {
       statusCode: 405,
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
         ok: false,
         message: "Method not allowed."
       })
     };
+
   } catch (error) {
     console.error("Customer request error:", error);
 
     return {
       statusCode: 500,
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
         ok: false,
         message: "Could not process customer request.",
