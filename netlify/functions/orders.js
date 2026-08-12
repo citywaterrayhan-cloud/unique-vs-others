@@ -1,13 +1,13 @@
-
-const { getStore } = require("@netlify/blobs");
-
 exports.handler = async (event) => {
   try {
+    const { getStore } = await import("@netlify/blobs");
+
     const store = getStore("orders");
 
-    // GET = সব order দেখাবে
+    // GET — সব order দেখাবে
     if (event.httpMethod === "GET") {
-      const orders = (await store.get("orders", { type: "json" })) || [];
+      const orders =
+        (await store.get("orders", { type: "json" })) || [];
 
       return {
         statusCode: 200,
@@ -21,7 +21,7 @@ exports.handler = async (event) => {
       };
     }
 
-    // POST = নতুন order save করবে
+    // POST — নতুন order save করবে
     if (event.httpMethod === "POST") {
       const incoming = JSON.parse(event.body || "{}");
 
@@ -81,11 +81,15 @@ exports.handler = async (event) => {
         message: "Method not allowed."
       })
     };
+
   } catch (error) {
     console.error("Orders function error:", error);
 
     return {
       statusCode: 500,
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
         ok: false,
         message: "Could not process order.",
