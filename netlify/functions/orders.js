@@ -1,27 +1,24 @@
+const GOOGLE_SHEET_API =
+  "https://script.google.com/macros/s/AKfycbxmp9iqWULp2VKnZYiWnP9v3feQPylt3uUaqC_avYOacZH0uOTTYjpB58BDw9z50OfA/exec";
+
 exports.handler = async (event) => {
   try {
-    const { getStore } = await import("@netlify/blobs");
-
-    const store = getStore("orders");
-
-    // GET — সব order দেখাবে
+    // GET — Orders নেওয়া
     if (event.httpMethod === "GET") {
-      const orders =
-        (await store.get("orders", { type: "json" })) || [];
+      const response = await fetch(GOOGLE_SHEET_API);
+
+      const data = await response.json();
 
       return {
         statusCode: 200,
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          ok: true,
-          orders
-        })
+        body: JSON.stringify(data)
       };
     }
 
-    // POST — নতুন order save করবে
+    // POST — নতুন Order পাঠানো
     if (event.httpMethod === "POST") {
       const incoming = JSON.parse(event.body || "{}");
 
@@ -45,37 +42,30 @@ exports.handler = async (event) => {
         };
       }
 
-      const orders =
-        (await store.get("orders", { type: "json" })) || [];
-
-      const order = {
-        ...incoming,
-        orderId:
-          incoming.orderId ||
-          "ORD-" + Date.now().toString(36).toUpperCase(),
-        status: incoming.status || "Received",
-        serverReceivedAt: new Date().toISOString()
-      };
-
-      orders.push(order);
-
-      await store.setJSON("orders", orders);
-
-      return {
-        statusCode: 200,
+      const response = await fetch(GOOGLE_SHEET_API, {
+        method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          ok: true,
-          message: "Order saved successfully.",
-          order
-        })
+        body: JSON.stringify(incoming)
+      });
+
+      const data = await response.json();
+
+      return {
+        statusCode: response.ok ? 200 : 500,
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
       };
     }
 
     return {
       statusCode: 405,
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
         ok: false,
         message: "Method not allowed."
