@@ -1,0 +1,523 @@
+{
+  "site": {},
+  "products": [
+    {
+      "id": 1,
+      "stock": 10,
+      "name": "Classic White Graphic Tee",
+      "category": "T-Shirt",
+      "images": [
+        "https://cdn.salla.sa/aeVzEQ/ic1bFLHUXhcQ8iO2O4l851RUlkN7eRaObRETNTgM.jpg"
+      ],
+      "actualPrice": 1111,
+      "discountPrice": 899,
+      "discount": true,
+      "newArrival": false,
+      "discountEnd": "2026-08-20T23:59:59",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "description": "Daily wear, casual outing, friends hangout, travel & regular use."
+    },
+    {
+      "id": 2,
+      "stock": 10,
+      "name": "Premium Blue Casual Shirt",
+      "category": "Shirt",
+      "images": [
+        "https://cdni.llbean.net/is/image/wim/300554_38714_41?hei=1370&wid=1190"
+      ],
+      "actualPrice": 1800,
+      "discountPrice": 1390,
+      "discount": true,
+      "newArrival": false,
+      "discountEnd": "2026-08-25T23:59:59",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "description": "Office, casual outing, party, dinner, travel & everyday wear."
+    },
+    {
+      "id": 3,
+      "stock": 10,
+      "name": "Black Relaxed Fit Trouser",
+      "category": "Trouser",
+      "images": [
+        "https://img.kwcdn.com/product/fancy/0294a1f2-fbdd-4577-93c8-ec7956cf2f16.jpg"
+      ],
+      "actualPrice": 1600,
+      "discountPrice": 1190,
+      "discount": true,
+      "newArrival": false,
+      "discountEnd": "2026-08-18T23:59:59",
+      "sizes": [
+        "30",
+        "32",
+        "34",
+        "36",
+        "38"
+      ],
+      "description": "Office, casual outing, travel, hangout & everyday wear."
+    },
+    {
+      "id": 4,
+      "stock": 10,
+      "name": "Maroon Floral Three Piece",
+      "category": "Three Piece",
+      "images": [
+        "https://static-01.daraz.com.bd/p/121fff225b7a768c1187fc0e66a7ac63.png"
+      ],
+      "actualPrice": 2200,
+      "discountPrice": 1550,
+      "discount": true,
+      "newArrival": false,
+      "discountEnd": "2026-08-30T23:59:59",
+      "sizes": [
+        "Free Size"
+      ],
+      "description": "Daily wear, outings, office, family events, parties & special occasions."
+    },
+    {
+      "id": 5,
+      "stock": 10,
+      "name": "Classic Black T-Shirt",
+      "category": "T-Shirt",
+      "images": [
+        "https://images.pexels.com/photos/8532616/pexels-photo-8532616.jpeg"
+      ],
+      "actualPrice": 1000,
+      "discountPrice": 650,
+      "discount": true,
+      "newArrival": false,
+      "discountEnd": "2026-08-30T23:59:59",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "description": "A classic black T-shirt designed for a clean and stylish everyday look.Made with comfortable fabric and a simple design, perfect for casual outings, hangouts, travel, and daily wear."
+    },
+    {
+      "id": 6,
+      "stock": 10,
+      "name": "Printed Casual Shirt",
+      "category": "Shirt",
+      "images": [
+        "https://images.pexels.com/photos/17901287/pexels-photo-17901287.jpeg"
+      ],
+      "actualPrice": 1650,
+      "discountPrice": 950,
+      "discount": true,
+      "newArrival": false,
+      "discountEnd": "2026-08-30T23:59:59",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "description": "A stylish printed casual shirt designed for a smart and trendy look. Its eye-catching pattern and comfortable fabric make it perfect for outings, parties, casual events, and everyday wear."
+    },
+    {
+      "id": 7,
+      "stock": 10,
+      "name": "Premium Casual Trouser",
+      "category": "Trouser",
+      "images": [],
+      "actualPrice": 1500,
+      "discountPrice": 990,
+      "discount": true,
+      "newArrival": false,
+      "discountEnd": "2026-08-30T23:59:59",
+      "sizes": [
+        "30",
+        "32",
+        "34",
+        "36",
+        "38"
+      ],
+      "description": "A comfortable and stylish casual trouser made for everyday use. Its relaxed design offers easy movement while maintaining a modern and fashionable look."
+    },
+    {
+      "id": 8,
+      "stock": 10,
+      "name": "Elegant Blue Three Piece",
+      "category": "Three Piece",
+      "images": [
+        "https://femalechoice.pk/cdn/shop/files/3_1_09d249c0-ea33-468b-a451-d443ade11c65.jpg?v=1739620152"
+      ],
+      "actualPrice": 1500,
+      "discountPrice": 950,
+      "discount": true,
+      "newArrival": false,
+      "discountEnd": "2026-08-30T23:59:59",
+      "sizes": [
+        "Free Size"
+      ],
+      "description": "An elegant blue three-piece designed to give you a graceful and stylish appearance. With beautiful detailing and a comfortable feel, it is perfect for everyday wear, family events, parties, and special occasions."
+    },
+    {
+      "id": 9,
+      "stock": 10,
+      "name": "Product 09",
+      "category": "T-Shirt",
+      "images": [
+        "https://mowriafashion.com/cdn/shop/files/WhatsAppImage2026-05-24at4.20.41PM.jpg?v=1779699095&width=3840"
+      ],
+      "actualPrice": 900,
+      "discountPrice": false,
+      "discount": false,
+      "newArrival": true,
+      "discountEnd": "2026-08-30T23:59:59",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "description": "Product Description"
+    },
+    {
+      "id": 10,
+      "stock": 10,
+      "name": "Product 10",
+      "category": "Shirt",
+      "images": [
+        "https://images.pexels.com/photos/17901262/pexels-photo-17901262.jpeg"
+      ],
+      "actualPrice": 1550,
+      "discountPrice": false,
+      "discount": false,
+      "newArrival": true,
+      "discountEnd": "2026-08-30T23:59:59",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "description": "Product Description"
+    },
+    {
+      "id": 11,
+      "stock": 10,
+      "name": "Product 11",
+      "category": "Trouser",
+      "images": [],
+      "actualPrice": 1200,
+      "discountPrice": false,
+      "discount": false,
+      "newArrival": true,
+      "discountEnd": "2026-08-30T23:59:59",
+      "sizes": [
+        "Free Size"
+      ],
+      "description": "Product Description"
+    },
+    {
+      "id": 12,
+      "stock": 10,
+      "name": "Product 12",
+      "category": "Three Piece",
+      "images": [
+        "https://images.pexels.com/photos/25184994/pexels-photo-25184994.jpeg"
+      ],
+      "actualPrice": 1400,
+      "discountPrice": false,
+      "discount": false,
+      "newArrival": true,
+      "discountEnd": "2026-08-30T23:59:59",
+      "sizes": [
+        "Free Size"
+      ],
+      "description": "Product Description"
+    },
+    {
+      "id": 13,
+      "stock": 10,
+      "name": "Product 13",
+      "category": "T-Shirt",
+      "images": [
+        "https://shop.peacebird.com/cdn/shop/files/1_b6da6e22-f354-4cd3-926b-f419242d6a6c.jpg?v=1757583695"
+      ],
+      "actualPrice": 800,
+      "discountPrice": false,
+      "discount": false,
+      "newArrival": true,
+      "discountEnd": "2026-08-30T23:59:59",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "description": "Product Description"
+    },
+    {
+      "id": 14,
+      "stock": 10,
+      "name": "Product 14",
+      "category": "Shirt",
+      "images": [
+        "https://images.pexels.com/photos/17901281/pexels-photo-17901281.jpeg"
+      ],
+      "actualPrice": 1550,
+      "discountPrice": false,
+      "discount": false,
+      "newArrival": true,
+      "discountEnd": "2026-08-30T23:59:59",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "description": "Product Description"
+    },
+    {
+      "id": 15,
+      "stock": 10,
+      "name": "Product 15",
+      "category": "Trouser",
+      "images": [],
+      "actualPrice": 850,
+      "discountPrice": false,
+      "discount": false,
+      "newArrival": true,
+      "discountEnd": "2026-08-30T23:59:59",
+      "sizes": [
+        "Free Size"
+      ],
+      "description": "Product Description"
+    },
+    {
+      "id": 16,
+      "stock": 10,
+      "name": "Product 16",
+      "category": "Three Piece",
+      "images": [
+        "https://images.pexels.com/photos/11840167/pexels-photo-11840167.jpeg"
+      ],
+      "actualPrice": 1350,
+      "discountPrice": false,
+      "discount": false,
+      "newArrival": true,
+      "discountEnd": "2026-08-30T23:59:59",
+      "sizes": [
+        "Free Size"
+      ],
+      "description": "Product Description"
+    },
+    {
+      "id": 17,
+      "stock": 10,
+      "name": "Product 17",
+      "category": "T-Shirt",
+      "images": [
+        "https://img.yfisher.com/m0/as/xsasycqjdv3m1klgv2vcq1hh/png100-t3-scale100.webp"
+      ],
+      "actualPrice": 1500,
+      "discountPrice": 1200,
+      "discount": true,
+      "newArrival": false,
+      "discountEnd": "2026-08-30T23:59:59",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "description": "Product Description"
+    },
+    {
+      "id": 18,
+      "stock": 10,
+      "name": "Product 18",
+      "category": "Shirt",
+      "images": [
+        "https://images.pexels.com/photos/17901263/pexels-photo-17901263.jpeg"
+      ],
+      "actualPrice": 1950,
+      "discountPrice": 1650,
+      "discount": true,
+      "newArrival": false,
+      "discountEnd": "2026-08-30T23:59:59",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "description": "Product Description"
+    },
+    {
+      "id": 19,
+      "stock": 10,
+      "name": "Product 19",
+      "category": "Trouser",
+      "images": [],
+      "actualPrice": 1500,
+      "discountPrice": 1190,
+      "discount": true,
+      "newArrival": false,
+      "discountEnd": "2026-08-30T23:59:59",
+      "sizes": [
+        "Free Size"
+      ],
+      "description": "Product Description"
+    },
+    {
+      "id": 20,
+      "stock": 10,
+      "name": "Product 20",
+      "category": "Three Piece",
+      "images": [
+        "https://images.pexels.com/photos/25184996/pexels-photo-25184996.jpeg"
+      ],
+      "actualPrice": 1690,
+      "discountPrice": 1199,
+      "discount": true,
+      "newArrival": false,
+      "discountEnd": "2026-08-30T23:59:59",
+      "sizes": [
+        "Free Size"
+      ],
+      "description": "Product Description"
+    },
+    {
+      "id": 21,
+      "stock": 10,
+      "name": "Product 21",
+      "category": "T-Shirt",
+      "images": [
+        "https://images.pexels.com/photos/29052570/pexels-photo-29052570.jpeg"
+      ],
+      "actualPrice": 990,
+      "discountPrice": false,
+      "discount": false,
+      "newArrival": false,
+      "discountEnd": "2026-08-30T23:59:59",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "description": "Product Description"
+    },
+    {
+      "id": 22,
+      "stock": 10,
+      "name": "Product 22",
+      "category": "Shirt",
+      "images": [
+        "https://images.pexels.com/photos/17901279/pexels-photo-17901279.jpeg"
+      ],
+      "actualPrice": 1199,
+      "discountPrice": false,
+      "discount": false,
+      "newArrival": false,
+      "discountEnd": "2026-08-30T23:59:59",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "description": "Product Description"
+    },
+    {
+      "id": 23,
+      "stock": 10,
+      "name": "Product 23",
+      "category": "Trouser",
+      "images": [],
+      "actualPrice": 890,
+      "discountPrice": false,
+      "discount": false,
+      "newArrival": false,
+      "discountEnd": "2026-08-30T23:59:59",
+      "sizes": [
+        "Free Size"
+      ],
+      "description": "Product Description"
+    },
+    {
+      "id": 24,
+      "stock": 10,
+      "name": "Product 24",
+      "category": "Three Piece",
+      "images": [
+        "https://images.pexels.com/photos/26973350/pexels-photo-26973350.jpeg"
+      ],
+      "actualPrice": 1299,
+      "discountPrice": false,
+      "discount": false,
+      "newArrival": false,
+      "discountEnd": "2026-08-30T23:59:59",
+      "sizes": [
+        "Free Size"
+      ],
+      "description": "Product Description"
+    },
+    {
+      "id": 1787764924170,
+      "name": "New Product",
+      "category": "T-Shirt",
+      "images": [],
+      "actualPrice": 0,
+      "discountPrice": 0,
+      "discount": false,
+      "newArrival": true,
+      "stock": 10,
+      "description": ""
+    },
+    {
+      "id": 1787764924894,
+      "name": "New Product",
+      "category": "T-Shirt",
+      "images": [],
+      "actualPrice": 0,
+      "discountPrice": 0,
+      "discount": false,
+      "newArrival": true,
+      "stock": 10,
+      "description": ""
+    },
+    {
+      "id": 1787764925070,
+      "name": "New Product",
+      "category": "T-Shirt",
+      "images": [],
+      "actualPrice": 0,
+      "discountPrice": 0,
+      "discount": false,
+      "newArrival": true,
+      "stock": 10,
+      "description": ""
+    },
+    {
+      "id": 1787764956438,
+      "name": "New Product",
+      "category": "T-Shirt",
+      "images": [],
+      "actualPrice": 0,
+      "discountPrice": 0,
+      "discount": false,
+      "newArrival": true,
+      "stock": 10,
+      "description": ""
+    }
+  ],
+  "settings": {},
+  "homepage": {},
+  "popup": {},
+  "store": {}
+}
