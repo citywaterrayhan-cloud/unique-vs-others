@@ -483,11 +483,11 @@
       "id": 1787764924894,
       "name": "New Product",
       "category": "T-Shirt",
-      "images": [],
+      "images": ["img/IMG/T-shirt multi colour and design 4.png"],
       "actualPrice": 0,
       "discountPrice": 0,
       "discount": false,
-      "newArrival": true,
+      "newArrival": true,  
       "stock": 10,
       "description": ""
     },
