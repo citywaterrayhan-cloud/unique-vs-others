@@ -902,9 +902,33 @@ function discountPercent(p){
  if(!p.discountPrice || p.discountPrice>=p.actualPrice) return 0;
  return Math.round((1-p.discountPrice/p.actualPrice)*100);
 }
+let globalProductSales = {};
+let globalSalesLoaded = false;
+
 function getProductSales(id){
+ if(globalSalesLoaded){
+  return Number(globalProductSales[String(id)] || 0);
+ }
  const orders=JSON.parse(localStorage.getItem("uvoOrders")||"[]");
  return orders.reduce((sum,o)=>sum+(o.items||[]).filter(x=>Number(x.id)===Number(id)).reduce((a,x)=>a+Number(x.qty||0),0),0);
+}
+
+async function loadGlobalProductSales(){
+ try{
+  const response=await fetch("https://script.google.com/macros/s/AKfycbxmp9iqWULp2VKnZYiWnP9v3feQPylt3uUaqC_avYOacZH0uOTTYjpB58BDw9z50OfA/exec?action=sales",{cache:"no-store"});
+  if(!response.ok) throw new Error("Could not load sales data");
+  const data=await response.json();
+  if(data && data.ok && data.sales){
+   globalProductSales=data.sales;
+   globalSalesLoaded=true;
+   renderAll();
+   renderSpecial();
+   renderCart();
+   renderCheckout();
+  }
+ }catch(error){
+  console.error("Global sales loading failed:",error);
+ }
 }
 function getProductStock(id){
  const p=products.find(x=>Number(x.id)===Number(id));
@@ -1381,19 +1405,38 @@ Total: ৳${total}`;
      WHATSAPP NETLIFY FUNCTION
   ========================= */
 
-  /* =========================
-   WHATSAPP ORDER
-========================= */
+  try{
 
-const WHATSAPP_NUMBER = "8801601256010";
+    const api = await fetch(
+      "/.netlify/functions/send-order",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: message,
+          order: order
+        })
+      }
+    );
 
-const whatsappUrl =
-  "https://wa.me/" +
-  WHATSAPP_NUMBER +
-  "?text=" +
-  encodeURIComponent(message);
+    if(!api.ok){
+      throw new Error(
+        "WhatsApp API is not configured"
+      );
+    }
 
-window.open(whatsappUrl, "_blank");
+  }catch(err){
+
+    navigator.clipboard
+      ?.writeText(message)
+      .catch(() => {});
+
+  }
+
+  // Refresh global sold counts immediately after the order is saved.
+  loadGlobalProductSales();
 
   /* =========================
      CLEAR CART
@@ -1497,6 +1540,7 @@ async function loadProductsFromData(){
     const data=await response.json();
     products=Array.isArray(data)?data:(Array.isArray(data.products)?data.products:[]);
     renderAll();renderSpecial();renderCart();renderCheckout();setTimer();updateNextOrderNo();
+    loadGlobalProductSales();
     if(location.pathname.endsWith("index.html") || location.pathname==="/" || location.pathname.endsWith("/")) setTimeout(showBestDiscount,800);
   }catch(error){
     console.error("Product data loading failed:",error);
