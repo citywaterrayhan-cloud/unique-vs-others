@@ -4,12 +4,12 @@
     {
       "id": 1,
       "stock": 10,
-      "name": "UniquevsOthers Brand T shirt -One Peice ",
+      "name": "UniquevsOthers Brand T shirt-One Peice ",
       "category": "T-Shirt",
       "images": [
         "IMG/T-shirt multi colour and design 2.png"
       ],
-      "actualPrice": 1111,
+      "actualPrice": 1550,
       "discountPrice": 899,
       "discount": true,
       "newArrival": false,
@@ -112,8 +112,8 @@
       "images": [
         "IMG/img 2/Shirt's/shirt 1.webp"
       ],
-      "actualPrice": 1950,
-      "discountPrice": 1550,
+      "actualPrice": 1550,
+      "discountPrice": 1250,
       "discount": true,
       "newArrival": false,
       "discountEnd": "2026-08-30T23:59:59",
@@ -131,8 +131,8 @@
       "name": "Foreign Trouser",
       "category": "Trouser",
       "images": ["IMG/img 2/Trouser's/Trouser 1.webp"],
-      "actualPrice": 1500,
-      "discountPrice": 990,
+      "actualPrice": 1600,
+      "discountPrice": 1100,
       "discount": true,
       "newArrival": false,
       "discountEnd": "2026-08-30T23:59:59",
@@ -157,7 +157,7 @@
       "discountPrice": 950,
       "discount": true,
       "newArrival": false,
-      "discountEnd": "2026-08-30T23:59:59",
+      "discountEnd": "2026-09-30T23:59:59",
       "sizes": [
         "Free Size"
       ],
@@ -166,7 +166,7 @@
     {
       "id": 9,
       "stock": 10,
-      "name": "Product 09",
+      "name": "Oversize T-shirt",
       "category": "T-Shirt",
       "images": [
         "https://mowriafashion.com/cdn/shop/files/WhatsAppImage2026-05-24at4.20.41PM.jpg?v=1779699095&width=3840"
@@ -175,7 +175,7 @@
       "discountPrice": false,
       "discount": false,
       "newArrival": true,
-      "discountEnd": "2026-08-30T23:59:59",
+      "discountEnd": "2026-09-30T23:59:59",
       "sizes": [
         "M",
         "L",
@@ -196,7 +196,7 @@
       "discountPrice": false,
       "discount": false,
       "newArrival": true,
-      "discountEnd": "2026-08-30T23:59:59",
+      "discountEnd": "2026-09-30T23:59:59",
       "sizes": [
         "M",
         "L",
@@ -211,11 +211,11 @@
       "name": "Foreign Trouser",
       "category": "Trouser",
       "images": ["IMG/img 2/Trouser's/Trouser 3.webp"],
-      "actualPrice": 1200,
+      "actualPrice": 1290,
       "discountPrice": false,
       "discount": false,
       "newArrival": true,
-      "discountEnd": "2026-08-30T23:59:59",
+      "discountEnd": "2026-09-30T23:59:59",
       "sizes": [
         "30",
         "32",
@@ -237,7 +237,7 @@
       "discountPrice": false,
       "discount": false,
       "newArrival": true,
-      "discountEnd": "2026-08-30T23:59:59",
+      "discountEnd": "2026-09-30T23:59:59",
       "sizes": [
         "Free Size"
       ],
@@ -246,7 +246,7 @@
     {
       "id": 13,
       "stock": 10,
-      "name": "Product 13",
+      "name": "Black Oversized T-Shirt",
       "category": "T-Shirt",
       "images": [
         "https://shop.peacebird.com/cdn/shop/files/1_b6da6e22-f354-4cd3-926b-f419242d6a6c.jpg?v=1757583695"
@@ -255,7 +255,7 @@
       "discountPrice": false,
       "discount": false,
       "newArrival": true,
-      "discountEnd": "2026-08-30T23:59:59",
+      "discountEnd": "2026-09-30T23:59:59",
       "sizes": [
         "M",
         "L",
@@ -272,11 +272,11 @@
       "images": [
         "IMG/img 2/Shirt's/shirt 4.webp"
       ],
-      "actualPrice": 1550,
+      "actualPrice": 1350,
       "discountPrice": false,
       "discount": false,
       "newArrival": true,
-      "discountEnd": "2026-08-30T23:59:59",
+      "discountEnd": "2026-09-30T23:59:59",
       "sizes": [
         "M",
         "L",
@@ -291,11 +291,11 @@
       "name": "Foreign Trouser",
       "category": "Trouser",
       "images": ["IMG/img 2/Trouser's/Trouser 4.webp"],
-      "actualPrice": 850,
+      "actualPrice": 1250,
       "discountPrice": false,
       "discount": false,
       "newArrival": true,
-      "discountEnd": "2026-08-30T23:59:59",
+      "discountEnd": "2026-09-30T23:59:59",
       "sizes": [
         "30",
         "32",
@@ -317,7 +317,7 @@
       "discountPrice": false,
       "discount": false,
       "newArrival": true,
-      "discountEnd": "2026-08-30T23:59:59",
+      "discountEnd": "2026-09-30T23:59:59",
       "sizes": [
         "Free Size"
       ],
@@ -331,11 +331,11 @@
       "images": [
         "IMG/T-shirt olive driven.png"
       ],
-      "actualPrice": 1500,
-      "discountPrice": 1200,
+      "actualPrice": 1200,
+      "discountPrice": 800,
       "discount": true,
       "newArrival": false,
-      "discountEnd": "2026-08-30T23:59:59",
+      "discountEnd": "2026-09-30T23:59:59",
       "sizes": [
         "M",
         "L",
@@ -352,11 +352,11 @@
       "images": [
         "IMG/img 2/Shirt's/shirt 5.webp"
       ],
-      "actualPrice": 1950,
-      "discountPrice": 1650,
+      "actualPrice": 1650,
+      "discountPrice": 1350,
       "discount": true,
       "newArrival": false,
-      "discountEnd": "2026-08-30T23:59:59",
+      "discountEnd": "2026-09-30T23:59:59",
       "sizes": [
         "M",
         "L",
@@ -375,7 +375,7 @@
       "discountPrice": 1190,
       "discount": true,
       "newArrival": false,
-      "discountEnd": "2026-08-30T23:59:59",
+      "discountEnd": "2026-09-30T23:59:59",
       "sizes": [
         "30",
         "32",
@@ -393,11 +393,11 @@
       "images": [
         "IMG/img 2/Three peice/Three peice 2.jpg"
       ],
-      "actualPrice": 1690,
+      "actualPrice": 1650,
       "discountPrice": 1199,
       "discount": true,
       "newArrival": false,
-      "discountEnd": "2026-08-30T23:59:59",
+      "discountEnd": "2026-09-30T23:59:59",
       "sizes": [
         "Free Size"
       ],
@@ -411,11 +411,11 @@
       "images": [
         "https://images.pexels.com/photos/29052570/pexels-photo-29052570.jpeg"
       ],
-      "actualPrice": 990,
+      "actualPrice": 790,
       "discountPrice": false,
       "discount": false,
       "newArrival": false,
-      "discountEnd": "2026-08-30T23:59:59",
+      "discountEnd": "2026-09-30T23:59:59",
       "sizes": [
         "M",
         "L",
@@ -436,7 +436,7 @@
       "discountPrice": false,
       "discount": false,
       "newArrival": false,
-      "discountEnd": "2026-08-30T23:59:59",
+      "discountEnd": "2026-09-30T23:59:59",
       "sizes": [
         "M",
         "L",
@@ -451,11 +451,11 @@
       "name": "Foreign Trouser",
       "category": "Trouser",
       "images": ["IMG/img 2/Trouser's/Trouser 6.webp"],
-      "actualPrice": 890,
+      "actualPrice": 1099,
       "discountPrice": false,
       "discount": false,
       "newArrival": false,
-      "discountEnd": "2026-08-30T23:59:59",
+      "discountEnd": "2026-09-30T23:59:59",
       "sizes": [
         "30",
         "32",
@@ -468,7 +468,7 @@
     {
       "id": 24,
       "stock": 10,
-      "name": "Product 240000",
+      "name": "Classic Three Piece",
       "category": "Three Piece",
       "images": [
         "https://images.pexels.com/photos/26973350/pexels-photo-26973350.jpeg"
@@ -477,7 +477,7 @@
       "discountPrice": false,
       "discount": false,
       "newArrival": false,
-      "discountEnd": "2026-08-30T23:59:59",
+      "discountEnd": "2026-09-30T23:59:59",
       "sizes": [
         "Free Size"
       ],
@@ -485,11 +485,11 @@
     },
     {
       "id": 25,
-      "name": "New Product",
+      "name": "Olive Classic T-Shirt",
       "category": "T-Shirt",
       "images": ["IMG/T-shirt white focus.png"],
-      "actualPrice": 0,
-      "discountPrice": 0,
+      "actualPrice": 850,
+      "discountPrice": false,
       "discount": false,
       "newArrival": true,
       "stock": 10,
@@ -506,8 +506,8 @@
       "name": "Full Sleeve Classic Fit Shirt",
       "category": "Shirt",
       "images": ["IMG/img 2/Shirt's/shirt 8.webp"],
-      "actualPrice": 0,
-      "discountPrice": 0,
+      "actualPrice": 1250,
+      "discountPrice": false,
       "discount": false,
       "newArrival": true,  
       "stock": 10,
@@ -543,8 +543,8 @@
       "name": "Blossom Three Piece",
       "category": "Three Piece",
       "images": ["IMG/img 2/Three peice/three peice 1.jpg"],
-      "actualPrice": 0,
-      "discountPrice": 0,
+      "actualPrice": 1190,
+      "discountPrice": false,
       "discount": false,
       "newArrival": true,
       "stock": 10,
@@ -555,11 +555,11 @@
     },
     {
       "id": 29,
-      "name": "New Product",
+      "name": " Black Strive T Shirt",
       "category": "T-Shirt",
-      "images": [],
-      "actualPrice": 0,
-      "discountPrice": 0,
+      "images": ["IMG/T-shirt Black Strive.png"],
+      "actualPrice": 999,
+      "discountPrice": false,
       "discount": false,
       "newArrival": true,
       "stock": 10,
@@ -576,8 +576,8 @@
       "name": "Full Sleeve Classic Fit Shirt",
       "category": "Shirt",
       "images": ["IMG/img 2/Shirt's/shirt 9.webp"],
-      "actualPrice": 0,
-      "discountPrice": 0,
+      "actualPrice": 1450,
+      "discountPrice": false,
       "discount": false,
       "newArrival": true,  
       "stock": 10,
@@ -594,8 +594,8 @@
       "name": "Foreign Trouser",
       "category": "Trouser",
       "images": ["IMG/img 2/Trouser's/Trouser 8.webp"],
-      "actualPrice": 0,
-      "discountPrice": 0,
+      "actualPrice": 1290,
+      "discountPrice": false,
       "discount": false,
       "newArrival": true,
       "stock": 10,
@@ -613,7 +613,7 @@
       "name": "Queen Three Piece",
       "category": "Three Piece",
       "images": ["IMG/img 2/Three peice/three peice 5.jpg"],
-      "actualPrice": 1290,
+      "actualPrice": 1390,
       "discountPrice": false,
       "discount": false,
       "newArrival": true,
