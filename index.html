@@ -1381,35 +1381,19 @@ Total: ৳${total}`;
      WHATSAPP NETLIFY FUNCTION
   ========================= */
 
-  try{
+  /* =========================
+   WHATSAPP ORDER
+========================= */
 
-    const api = await fetch(
-      "/.netlify/functions/send-order",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          message: message,
-          order: order
-        })
-      }
-    );
+const WHATSAPP_NUMBER = "8801601256010";
 
-    if(!api.ok){
-      throw new Error(
-        "WhatsApp API is not configured"
-      );
-    }
+const whatsappUrl =
+  "https://wa.me/" +
+  WHATSAPP_NUMBER +
+  "?text=" +
+  encodeURIComponent(message);
 
-  }catch(err){
-
-    navigator.clipboard
-      ?.writeText(message)
-      .catch(() => {});
-
-  }
+window.open(whatsappUrl, "_blank");
 
   /* =========================
      CLEAR CART
